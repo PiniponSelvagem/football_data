@@ -2,8 +2,8 @@
 
 Programmed application in C language for the subject "Programming in Computational Systems - PSC", using a Linux VMachine.
 This app queries a server, with jansson and curl libraries, where it finds data of several football competitions, teams and games.
-* ISEL, Intituto Superior de Engenharia de Lisboa.
-* LEIC, Licenciatura em Engenharia Informática e de Computadores.
+* ISEL - Intituto Superior de Engenharia de Lisboa.
+* LEIC - Licenciatura em Engenharia Informática e de Computadores.
 
 ## Getting Started
 
@@ -15,6 +15,8 @@ You will need a Linux machine, physical or virtual, your choice.
 This project in particular was made using Ubuntu distro.
 
 ### Installing
+
+What you will need:
 
 * [curl](http://curl.haxx.se/libcurl) - CURL library documentation.
 
@@ -28,15 +30,61 @@ sudo apt-get install libcurl4-gnutls-dev
 sudo apt-get install libjansson-dev
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+* [valgrind] - valgrind (manual: TERMINAL).
 
-## Running the tests
+```
+sudo apt-get install valgrind
+man valgrind
+```
 
-Explain how to run the automated tests for this system
+Now you are ready to compile and test the code.
 
-### Break down into end to end tests
+## Running the application
 
-Explain what these tests test and why
+To change the season from where the application will look for the competitions, in the application arguments write the year, if not, it will look for the current competitions.
+
+```
+./football_data {year}
+./football_data
+```
+
+After compiling and with the application running, you can use the following commands:
+
+List competitions:
+
+```
+c
+```
+
+List teams for a determinated competition:
+
+```
+t {competition_id}
+```
+
+List games for a determinated competition:
+
+```
+x {competition_id}
+```
+
+List games for a determinated team in all queried competitions till now:
+
+```
+j {team_id}
+```
+
+Close the app:
+
+```
+q
+```
+
+Any other unrecognized command will show all the available commands.
+
+## How it works
+
+
 
 ```
 Give an example
