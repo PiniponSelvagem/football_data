@@ -30,7 +30,7 @@ sudo apt-get install libcurl4-gnutls-dev
 sudo apt-get install libjansson-dev
 ```
 
-* [valgrind] - valgrind (manual: TERMINAL).
+* [valgrind](http://valgrind.org/) - valgrind (manual: TERMINAL).
 
 ```
 sudo apt-get install valgrind
@@ -84,50 +84,34 @@ Any other unrecognized command will show all the available commands.
 
 ## How it works
 
+When the app is running, it will wait for user input, showing the ">" char.
 
+Lets say that we want to check the current competitions, we input "c" and it will give us a list.
+Thats a linked list of struct 'Competition'.
+
+Next we want to see which teams play in one of those competitions, example ID: 445.
+Input will be "t 445", will then show a list with all the teams for that competition.
+This list is a linked list of struct 'Team' inside a linked list of struct 'TeamNode'.
+TeamNode is were we save all the queried teams till now, so later on we dont need to query the server again.
+
+Now lets get all the games for competition, example 445.
+Input will be "x 445", and show us a list of all the games for that competition as expected.
+Its a linked list of struct 'Fixture' inside a linked list of struct 'FixtureNode'.
+Again, FixtureNode because we dont want to query the server again later on, so we save the info in memory in a list.
+
+How about he get all the games that Chelsea plays in all the competitions that we queried so far?
+Input "j CFC", CFC is the team ID for Chelsea that we got from the "t 445" command.
+And we got all the games printed in a list format from all the info we got before from the server.
 
 ```
-Give an example
+c
+t 445
+x 445
+j CFC
 ```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* **Rodrigo Silva** - *ISEL A41429* - [PiniponSelvagem](https://github.com/PiniponSelvagem)
+* **Marta Mendes** - *ISEL A42126*
+* **David Soares** - *ISEL A42193*
