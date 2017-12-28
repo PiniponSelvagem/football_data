@@ -38,7 +38,7 @@ static void print_fixtures(FixtureNode *fn, int id) {
 }
 
 static void print_fixtures_not_found(char *team_code) {
-	printf("\nNo fixtures found for team %s! Try again with command 't' and then command 'x'.\n", team_code);
+	printf("\nNo fixtures nor team ID found for team %s! Try running command 't' and then command 'x'.\n", team_code);
 }
 
 static void print_help() {
@@ -145,22 +145,24 @@ int main(int nargs, char *args[]) {
 		}
 		else if (input[0] == t[0]) {  //Teams
 			int id = get_int(input);
-			if (!check_teams_exists(teams_head, id, 1) && id>=0) { //3nd param, print if found
+			int exits = check_teams_exists(teams_head, id, 1);
+			if (exits==0 && id>=0) { //3nd param, print if found
 				teams_head = save_teams_tolist(teams_head, id);
 				print_teams(teams_head, teams_head->competition_id);	//print last teams data, 1st position in teams list
 			}
 			else {
-				print_help();
+				if (exits==0) print_help();
 			}
 		}
 		else if (input[0] == x[0]) {  //Games
 			int id = get_int(input);
-			if (!check_fixtures_exists(fixtures_head, id, 1) && id>=0) { //3nd param, print if found
+			int exits = check_fixtures_exists(fixtures_head, id, 1);
+			if (exits==0 && id>=0) { //3nd param, print if found
 				fixtures_head = save_fixtures_tolist(fixtures_head, id);
 				print_fixtures(fixtures_head, fixtures_head->competition_id);	//print last fixtures data, 1st position in fixtures list
 			}
 			else {
-				print_help();
+				if (exits==0) print_help();
 			}
 		}
 		else if (input[0] == j[0]) {  //Team Games
