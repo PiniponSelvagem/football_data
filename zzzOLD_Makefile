@@ -1,0 +1,22 @@
+#gcc football_data.c libfootball.c -Wall -pedantic -std=c99 -o football_data -lcurl -ljansson
+CFLAGS = -c -Wall -pedantic -std=c99
+LDFLAGS =  -lcurl -ljansson
+HEADER_FILES = libfootball.h
+
+ALL = football_data
+
+all: $(ALL)
+
+football_data: football_data.o libfootball.o
+	gcc -o football_data football_data.o libfootball.o $(LDFLAGS)
+
+football_data.o: football_data.c $(HEADER_FILES)
+	gcc football_data.c $(CFLAGS)
+	
+libfootball.o: libfootball.c
+	gcc libfootball.c $(CFLAGS)
+	
+
+
+clean:
+	rm -f $(ALL) *.o
