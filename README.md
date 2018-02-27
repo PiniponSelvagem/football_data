@@ -113,5 +113,3 @@ j CFC
 ## Authors
 
 * **Rodrigo Silva** - *ISEL A41429* - [PiniponSelvagem](https://github.com/PiniponSelvagem)
-* **Marta Mendes** - *ISEL A42126*
-* **David Soares** - *ISEL A42193*
